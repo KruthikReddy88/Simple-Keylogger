@@ -6,5 +6,5 @@ This is a simulated output of the keylogger capturing keystrokes.
 [SHIFT]This[SPACE]is[SPACE]a[SPACE]test.[ENTER]
 [CTRL]C[BACKSPACE][SHIFT]Program[SPACE]has[SPACE]started.[ENTER]
 [ESCAPE]Exiting[SPACE]the[SPACE]program.[ENTER]
-
+ 
 Keylogger has logged keystrokes successfully.
